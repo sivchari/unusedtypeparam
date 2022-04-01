@@ -24,6 +24,9 @@ jobs:
       - name: Install Go
         run: |
           go install golang.org/dl/go1.18@latest
+      
+      - name: Download 1.18
+        run: |
           go1.18 download
 
       - name: Restore cache
