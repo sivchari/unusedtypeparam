@@ -21,6 +21,11 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
 
+      - name: Install Go
+        run: |
+          go install golang.org/dl/go1.18@latest
+          go1.18 download
+
       - name: Restore cache
         uses: actions/cache@v1
         with:
@@ -30,9 +35,9 @@ jobs:
             ${{ runner.os }}-go-
       - name: Get dependencies
         run: |
-          go mod download
+          go1.18 mod download
       - name: Test
-        run: go test
+        run: go1.18 test
 
   lint:
     name: Lint
